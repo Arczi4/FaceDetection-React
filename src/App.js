@@ -1,12 +1,10 @@
-import './App.css';
-import CheckWebcam from './components/CheckWebcam/CheckWebcam';
+import React from 'react';
+import Main from './components/Main/Main';
 
-function App() {
-  return (
-    <div className="App">
-      <CheckWebcam />
-    </div>
-  );
-}
+const App = () => (
+  <>
+    <Main />
+  </>
+)
 
 export default App;
