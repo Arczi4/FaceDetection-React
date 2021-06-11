@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react';
 import styled from "styled-components";
 import * as tf from "@tensorflow/tfjs";
+import { Col, Row, Button } from 'antd';
+import 'antd/dist/antd.css';
 import * as blazeface from "@tensorflow-models/blazeface";
 
 const CheckWebcam = () => {
@@ -8,12 +10,10 @@ const CheckWebcam = () => {
   const openFilePicker = () => {
     if (fileInputRef.current) fileInputRef.current.click();
   };
-  const HiddenFileInput = styled.input`
-  display: none;
-`;
+  const HiddenFileInput = styled.input`display: none;`;
+
   const fileInputRef = useRef();
   const imageRef = useRef(null);
-  console.log(imageRef, 'what');
   const [imgData, setImgData] = useState(null);
   const [isLoading, setLoading] = useState(false);
 
@@ -77,7 +77,6 @@ const CheckWebcam = () => {
           const start = predictions[i].topLeft;
           const end = predictions[i].bottomRight;
           const size = [end[0] - start[0], end[1] - start[1]];
-          console.log(size);
           ctx.beginPath();
           ctx.strokeStyle = "rgba(255, 0, 0)";
           ctx.lineWidth = 2;
@@ -90,44 +89,46 @@ const CheckWebcam = () => {
 
   return (
     <>
-        <div>
-            <img src={imgData} ref={imageRef}
-                style={{
-                    position: "absolute",
-                    marginLeft: "auto",
-                    marginRight: 'auto',
-                    left: 0,
-                    right: 0,
-                    textAlign: "centr",
-                    zIndex: 9,
-                    width: 640,
-                    height: 480
-                }}
-            />
+      <div style={{padding: 25}}>
+          <img src={imgData} ref={imageRef}
+              style={{
+                  position: "absolute",
+                  marginLeft: "auto",
+                  marginRight: 'auto',
+                  left: 0,
+                  right: 0,
+                  textAlign: "centr",
+                  zIndex: 9,
+                  width: 640,
+                  height: 480
+              }}
+          />
+          <canvas ref={canvasRef}
+              style={{
+                position: "absolute",
+                marginLeft: "auto",
+                marginRight: 'auto',
+                left: 0,
+                right: 0,
+                textAlign: "centr",
+                zIndex: 9,
+                width: 640,
+                height: 480
+            }}
+          />
         </div>
-        <div>
-            <canvas ref={canvasRef}
-                style={{
-                    position: "absolute",
-                    marginLeft: "auto",
-                    marginRight: 'auto',
-                    left: 0,
-                    right: 0,
-                    textAlign: "centr",
-                    zIndex: 9,
-                    width: 640,
-                    height: 480
-                }}
-            />
-        </div>
-        <HiddenFileInput
-            type="file"
-            ref={fileInputRef}
-            onChange={onSelectImage}
-        />
-        <button onClick={openFilePicker}>
-            {isLoading ? "Recognizing..." : "Select Image"}
-        </button>
+        <div style={{padding: 500}}>
+        <Col offset={11}>
+          <HiddenFileInput
+              type="file"
+              ref={fileInputRef}
+              onChange={onSelectImage}
+          />
+          <Button type="primary" shape="round" onClick={openFilePicker} >
+              {isLoading ? "Recognizing..." : "Select Image"}
+          </Button>
+        </Col>
+      </div>
     </>
   );
 }

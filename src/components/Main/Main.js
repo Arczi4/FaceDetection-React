@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Card, Menu } from 'antd';
+import { Row, Col, Menu } from 'antd';
 import 'react-toastify/dist/ReactToastify.css';
 import 'antd/dist/antd.css';
 import HelloPage from '../HelloPage/HelloPage';
 import CheckWebcam from '../CheckWebcam/CheckWebcam';
 import CheckImage from '../CheckImage/CheckImage';
+import Header from '../Header/Header';
 
 const Main = () => {
   const [noTitleKey, setnoTitleKey] = useState('1');
@@ -36,7 +37,8 @@ const Main = () => {
         <Menu.Item key="2">Webcam</Menu.Item>
         <Menu.Item key="3">Photo</Menu.Item>
       </Menu>
-      <Card>{contentList[noTitleKey]}</Card>
+      <Header />
+      <div>{contentList[noTitleKey]}</div>
     </>
   );
 };
