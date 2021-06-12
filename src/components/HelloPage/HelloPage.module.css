@@ -1,0 +1,11 @@
+.HelloPage {
+    background-image: url("test.jpg");
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.Font{
+    font-size: 32;
+}

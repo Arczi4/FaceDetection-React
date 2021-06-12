@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import * as tf from "@tensorflow/tfjs";
 import * as blazeface from "@tensorflow-models/blazeface";
 import Webcam from "react-webcam";
+import styles from '../HelloPage/HelloPage.module.css';
 
 const CheckWebcam = () => {
 
@@ -69,7 +70,7 @@ const CheckWebcam = () => {
 
   getFace()
   return (
-    <div className="App">
+    <div className={styles.HelloPage}>
       <header className="App-header">
         <Webcam 
           ref={webcamRef}
@@ -82,7 +83,8 @@ const CheckWebcam = () => {
             textAlign: "centr",
             zIndex: 9,
             width: 640,
-            height: 480
+            height: 480,
+            marginTop: 90,
           }}
         />
         <canvas ref={canvasRef}
@@ -95,7 +97,8 @@ const CheckWebcam = () => {
             textAlign: "centr",
             zIndex: 9,
             width: 640,
-            height: 480
+            height: 480,
+            marginTop: 90,
           }}
         />
       </header>

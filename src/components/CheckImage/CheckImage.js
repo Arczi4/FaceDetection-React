@@ -4,6 +4,7 @@ import * as tf from "@tensorflow/tfjs";
 import { Col, Row, Button } from 'antd';
 import 'antd/dist/antd.css';
 import * as blazeface from "@tensorflow-models/blazeface";
+import styles from '../HelloPage/HelloPage.module.css';
 
 const CheckWebcam = () => {
   const canvasRef = useRef();
@@ -88,8 +89,8 @@ const CheckWebcam = () => {
   }
 
   return (
-    <>
-      <div style={{padding: 25}}>
+    <div className={styles.HelloPage}>
+      <div style={{padding: 90}}>
           <img src={imgData} ref={imageRef}
               style={{
                   position: "absolute",
@@ -117,7 +118,7 @@ const CheckWebcam = () => {
             }}
           />
         </div>
-        <div style={{padding: 500}}>
+        <div style={{marginTop: 400}}>
         <Col offset={11}>
           <HiddenFileInput
               type="file"
@@ -129,7 +130,7 @@ const CheckWebcam = () => {
           </Button>
         </Col>
       </div>
-    </>
+    </div>
   );
 }
 
